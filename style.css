@@ -1,1 +1,154 @@
+/* ==== Reset & base ==== */
+:root{
+  --bg: #f6f8fb;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --accent: #5563DE;
+  --accent-2: #74ABE2;
+  --glass: rgba(255,255,255,0.6);
+  --soft: 12px;
+  --radius: 12px;
+  --shadow: 0 8px 30px rgba(20,20,50,0.08);
+  --text: #1f2937;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg,var(--bg), #e9eef8);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  scroll-behavior:smooth;
+}
+
+/* Topbar: left brand, right menu */
+.topbar{
+  position:fixed;
+  left:0;right:0;top:0;
+  height:68px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 22px;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 18px rgba(16,24,40,0.06);
+  z-index:200;
+}
+
+/* brand */
+.brand{display:flex;align-items:center;gap:12px}
+.brand-logo{
+  width:48px;height:48px;border-radius:8px;object-fit:cover;border:1px solid rgba(0,0,0,0.05)
+}
+.brand-text{display:flex;flex-direction:column;line-height:1}
+.school-abbr{font-weight:700;color:var(--accent);font-size:14px}
+.school-name{font-weight:700;font-size:16px;color:var(--text)}
+
+/* top menu on right */
+.topmenu ul{display:flex;gap:18px;align-items:center;margin:0;padding:0;list-style:none}
+.topmenu a{
+  color:var(--text);
+  text-decoration:none;
+  font-weight:600;
+  padding:8px 12px;border-radius:10px;
+  transition: all .22s ease;
+}
+.topmenu a:hover{background:var(--accent-2);color:white;transform:translateY(-3px);box-shadow:var(--shadow)}
+
+/* Main layout padding to not hide under topbar */
+main{padding-top:100px}
+
+/* section basic */
+.section{min-height:75vh;padding:64px 20px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px;text-align:center}
+
+/* HOME */
+.home-title{font-size:48px;margin:6px 0 6px;color:var(--accent)}
+.home-welcome{max-width:760px;color:var(--muted);font-size:18px}
+.home-logo{width:220px;height:220px;object-fit:contain;border-radius:16px;box-shadow:var(--shadow);background:linear-gradient(180deg,var(--card),#f7f9ff);padding:18px}
+
+/* Section headings */
+.section-title{font-size:32px;color:var(--accent)}
+.section-sub{color:var(--muted);max-width:760px}
+
+/* ABSENSI grid (kotak clickable) */
+.absensi-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+  width:100%;
+  max-width:1100px;
+  margin-top:18px;
+  padding:0 12px;
+}
+
+.absensi-card{
+  display:block;
+  text-decoration:none;
+  color:var(--text);
+  border-radius:var(--radius);
+  background:linear-gradient(180deg,var(--card),#fbfdff);
+  padding:28px;
+  min-height:140px;
+  box-shadow:var(--shadow);
+  border:1px solid rgba(80,90,160,0.06);
+  transition:transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s;
+  position:relative; overflow:hidden;
+}
+.absensi-card::after{
+  content:"";
+  position:absolute;right:-40%;top:-40%;width:140%;height:140%;
+  background:radial-gradient(circle at 30% 20%, rgba(85,99,222,0.08), transparent 20%),
+             radial-gradient(circle at 80% 80%, rgba(116,171,226,0.06), transparent 20%);
+  transform:translateZ(0);
+  transition:opacity .3s;
+}
+.absensi-card:hover{transform:translateY(-8px) rotate(-1deg);box-shadow:0 18px 40px rgba(25,30,70,0.12)}
+.absensi-inner{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.absensi-title{font-weight:700;font-size:18px;color:var(--accent)}
+.absensi-sub{color:var(--muted);font-size:14px}
+
+/* QUIZ / EVALUASI */
+.quiz-form{max-width:820px;width:100%;text-align:left;padding:18px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfdff);box-shadow:var(--shadow);border:1px solid rgba(16,24,40,0.03)}
+.q{margin-bottom:14px}
+.q-t{font-weight:700;margin-bottom:8px}
+.q label{display:block;margin:6px 0;color:var(--text)}
+.quiz-actions{display:flex;gap:12px;align-items:center}
+
+/* buttons */
+.btn{padding:10px 14px;border-radius:10px;border:1px solid transparent;font-weight:700;cursor:pointer}
+.btn.primary{background:var(--accent);color:white}
+.btn.ghost{background:transparent;border:1px solid rgba(31,41,55,0.06);color:var(--text)}
+
+/* Modal simple */
+.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(8,10,20,0.45);z-index:400}
+.modal.hidden{display:none}
+.modal-inner{background:white;padding:18px;border-radius:12px;max-width:700px;width:94%;box-shadow:var(--shadow);position:relative}
+.modal-close{position:absolute;right:12px;top:10px;border:none;background:transparent;font-size:24px;cursor:pointer}
+
+/* Footer */
+.site-footer{padding:28px 20px;background:transparent;border-top:1px solid rgba(30,40,60,0.04);margin-top:36px}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;gap:12px;align-items:center;justify-content:space-between}
+.footer-blog h4{margin:0;font-size:16px}
+.footer-copy{color:var(--muted)}
+
+/* Tiny animations: title appear */
+.section-title, .home-title, .home-welcome, .home-logo, .absensi-card, .quiz-form{
+  opacity:0; transform:translateY(18px) scale(.99);
+  transition: all .6s cubic-bezier(.2,.9,.2,1);
+}
+
+/* when visible (class added by JS) */
+.visible{opacity:1; transform:translateY(0) scale(1)}
+
+/* responsive */
+@media (max-width:720px){
+  .home-title{font-size:32px}
+  .brand-text{display:none}
+  .topmenu ul{gap:8px}
+  .absensi-grid{grid-template-columns:repeat(1,1fr)}
+}
 
