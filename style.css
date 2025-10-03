@@ -24,7 +24,7 @@ body{
   scroll-behavior:smooth;
 }
 
-/* Topbar: left brand, right menu */
+/* ==== Topbar ==== */
 .topbar{
   position:fixed;
   left:0;right:0;top:0;
@@ -48,7 +48,7 @@ body{
 .school-abbr{font-weight:700;color:var(--accent);font-size:14px}
 .school-name{font-weight:700;font-size:16px;color:var(--text)}
 
-/* top menu on right */
+/* menu */
 .topmenu ul{display:flex;gap:18px;align-items:center;margin:0;padding:0;list-style:none}
 .topmenu a{
   color:var(--text);
@@ -59,10 +59,8 @@ body{
 }
 .topmenu a:hover{background:var(--accent-2);color:white;transform:translateY(-3px);box-shadow:var(--shadow)}
 
-/* Main layout padding to not hide under topbar */
+/* ==== Layout ==== */
 main{padding-top:100px}
-
-/* section basic */
 .section{min-height:75vh;padding:64px 20px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px;text-align:center}
 
 /* HOME */
@@ -74,7 +72,7 @@ main{padding-top:100px}
 .section-title{font-size:32px;color:var(--accent)}
 .section-sub{color:var(--muted);max-width:760px}
 
-/* ABSENSI grid (kotak clickable) */
+/* ==== ABSENSI ==== */
 .absensi-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -84,7 +82,6 @@ main{padding-top:100px}
   margin-top:18px;
   padding:0 12px;
 }
-
 .absensi-card{
   display:block;
   text-decoration:none;
@@ -111,44 +108,53 @@ main{padding-top:100px}
 .absensi-title{font-weight:700;font-size:18px;color:var(--accent)}
 .absensi-sub{color:var(--muted);font-size:14px}
 
-/* QUIZ / EVALUASI */
-.quiz-form{max-width:820px;width:100%;text-align:left;padding:18px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfdff);box-shadow:var(--shadow);border:1px solid rgba(16,24,40,0.03)}
+/* ==== EVALUASI (dibuat mirip absensi card) ==== */
+.quiz-form{
+  max-width:820px;width:100%;
+  text-align:left;
+  padding:28px;
+  border-radius:var(--radius);
+  background:linear-gradient(180deg,var(--card),#fbfdff);
+  box-shadow:var(--shadow);
+  border:1px solid rgba(80,90,160,0.06);
+  transition:transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s;
+}
+.quiz-form:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(25,30,70,0.1)}
+
 .q{margin-bottom:14px}
 .q-t{font-weight:700;margin-bottom:8px}
 .q label{display:block;margin:6px 0;color:var(--text)}
-.quiz-actions{display:flex;gap:12px;align-items:center}
+
+.quiz-actions{display:flex;gap:12px;align-items:center;margin-top:14px}
 
 /* buttons */
 .btn{padding:10px 14px;border-radius:10px;border:1px solid transparent;font-weight:700;cursor:pointer}
 .btn.primary{background:var(--accent);color:white}
 .btn.ghost{background:transparent;border:1px solid rgba(31,41,55,0.06);color:var(--text)}
 
-/* Modal simple */
+/* ==== Modal ==== */
 .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(8,10,20,0.45);z-index:400}
 .modal.hidden{display:none}
 .modal-inner{background:white;padding:18px;border-radius:12px;max-width:700px;width:94%;box-shadow:var(--shadow);position:relative}
 .modal-close{position:absolute;right:12px;top:10px;border:none;background:transparent;font-size:24px;cursor:pointer}
 
-/* Footer */
+/* ==== Footer ==== */
 .site-footer{padding:28px 20px;background:transparent;border-top:1px solid rgba(30,40,60,0.04);margin-top:36px}
 .footer-inner{max-width:1100px;margin:0 auto;display:flex;gap:12px;align-items:center;justify-content:space-between}
 .footer-blog h4{margin:0;font-size:16px}
 .footer-copy{color:var(--muted)}
 
-/* Tiny animations: title appear */
+/* ==== Animations ==== */
 .section-title, .home-title, .home-welcome, .home-logo, .absensi-card, .quiz-form{
   opacity:0; transform:translateY(18px) scale(.99);
   transition: all .6s cubic-bezier(.2,.9,.2,1);
 }
-
-/* when visible (class added by JS) */
 .visible{opacity:1; transform:translateY(0) scale(1)}
 
-/* responsive */
+/* ==== Responsive ==== */
 @media (max-width:720px){
   .home-title{font-size:32px}
   .brand-text{display:none}
   .topmenu ul{gap:8px}
   .absensi-grid{grid-template-columns:repeat(1,1fr)}
 }
-
