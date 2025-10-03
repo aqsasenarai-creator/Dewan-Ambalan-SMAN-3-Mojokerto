@@ -1,1 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SMK Contoh — Sistem Absensi & Evaluasi</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Top bar: logo + nama sekolah (kiri) | menu (kanan) -->
+  <header class="topbar">
+    <div class="brand">
+      <img src="logo-placeholder.png" alt="Logo Sekolah" class="brand-logo" />
+      <div class="brand-text">
+        <div class="school-abbr">SMK</div>
+        <div class="school-name">Contoh Negeri 1</div>
+      </div>
+    </div>
+
+    <nav class="topmenu" aria-label="Main menu">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#absensi">Absensi</a></li>
+        <li><a href="#evaluasi">Evaluasi</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <!-- HOME SECTION -->
+    <section id="home" class="section home-section">
+      <div class="home-inner">
+        <h1 class="home-title">SMK Contoh Negeri 1</h1>
+        <p class="home-welcome">Selamat datang di website resmi SMK Contoh — Sistem Absensi & Evaluasi Siswa.</p>
+
+        <!-- logo sedang -->
+        <img src="logo-placeholder-large.png" alt="Logo Besar Sekolah" class="home-logo" />
+
+        <p class="logo-desc">
+          Logo sekolah menggambarkan komitmen pada kualitas pendidikan, inovasi, dan kebersamaan.
+          (Deskripsi singkat boleh diubah sesuai makna logo sekolah Anda.)
+        </p>
+      </div>
+    </section>
+
+    <!-- ABSENSI SECTION -->
+    <section id="absensi" class="section absensi-section">
+      <h1 class="section-title">Absensi</h1>
+      <p class="section-sub">Klik kotak siswa/kelas untuk melakukan presensi atau menuju halaman detail.</p>
+
+      <div class="absensi-grid">
+        <!-- Contoh kotak produk => ubah href sesuai link yang akan kamu pakai -->
+        <a class="absensi-card" href="https://example.com/absensi/kelas-10a" target="_blank" rel="noopener noreferrer">
+          <div class="absensi-inner">
+            <div class="absensi-title">Kelas 10A</div>
+            <div class="absensi-sub">Klik untuk absen</div>
+          </div>
+        </a>
+
+        <a class="absensi-card" href="https://example.com/absensi/kelas-10b" target="_blank" rel="noopener noreferrer">
+          <div class="absensi-inner">
+            <div class="absensi-title">Kelas 10B</div>
+            <div class="absensi-sub">Klik untuk absen</div>
+          </div>
+        </a>
+
+        <a class="absensi-card" href="https://example.com/absensi/kelas-11a" target="_blank" rel="noopener noreferrer">
+          <div class="absensi-inner">
+            <div class="absensi-title">Kelas 11A</div>
+            <div class="absensi-sub">Klik untuk absen</div>
+          </div>
+        </a>
+
+        <a class="absensi-card" href="https://example.com/absensi/kelas-11b" target="_blank" rel="noopener noreferrer">
+          <div class="absensi-inner">
+            <div class="absensi-title">Kelas 11B</div>
+            <div class="absensi-sub">Klik untuk absen</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- EVALUASI SECTION -->
+    <section id="evaluasi" class="section evaluasi-section">
+      <h1 class="section-title">Evaluasi (Kuis Pilihan Ganda)</h1>
+      <p class="section-sub">Jawab pertanyaan berikut — setiap pertanyaan hanya 1 jawaban benar.</p>
+
+      <form id="quizForm" class="quiz-form" autocomplete="off">
+        <div class="q">
+          <p class="q-t">1. Apa ibu kota Indonesia?</p>
+          <label><input type="radio" name="q1" value="a"> a) Jakarta</label>
+          <label><input type="radio" name="q1" value="b"> b) Bandung</label>
+          <label><input type="radio" name="q1" value="c"> c) Surabaya</label>
+        </div>
+
+        <div class="q">
+          <p class="q-t">2. 2 + 2 = ?</p>
+          <label><input type="radio" name="q2" value="a"> a) 3</label>
+          <label><input type="radio" name="q2" value="b"> b) 4</label>
+          <label><input type="radio" name="q2" value="c"> c) 5</label>
+        </div>
+
+        <div class="q">
+          <p class="q-t">3. Warna bendera Indonesia?</p>
+          <label><input type="radio" name="q3" value="a"> a) Merah Putih</label>
+          <label><input type="radio" name="q3" value="b"> b) Biru Putih</label>
+          <label><input type="radio" name="q3" value="c"> c) Hijau Kuning</label>
+        </div>
+
+        <div class="quiz-actions">
+          <button type="submit" class="btn primary">Kirim Jawaban</button>
+          <button type="button" id="viewResultsBtn" class="btn ghost">Lihat Hasil (Terbatas)</button>
+        </div>
+
+        <p id="quizMsg" class="quiz-msg" aria-live="polite"></p>
+      </form>
+
+      <!-- Results modal -->
+      <div id="resultsModal" class="modal hidden">
+        <div class="modal-inner">
+          <button class="modal-close" id="closeResults">&times;</button>
+          <h3>Hasil Evaluasi</h3>
+          <div id="resultsContent"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER: blog pribadi ringkas -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-blog">
+        <h4>Blog Pribadi</h4>
+        <p>Terbaru: Tips belajar efektif & pengumuman sekolah.</p>
+      </div>
+      <div class="footer-copy">© <span id="year"></span> SMK Contoh Negeri 1</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
 
