@@ -16,7 +16,6 @@ $$('.topmenu a').forEach(a => {
       const target = document.querySelector(href);
       if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-    // jika link absolute atau file lain, biarkan browser buka (atau target="_blank")
   });
 });
 
@@ -41,7 +40,6 @@ if (quizForm) {
   const viewResultsBtn = $('#viewResultsBtn');
   const closeResults = $('#closeResults');
 
-  // correct answers (ubah sesuai)
   const CORRECT = { q1: 'a', q2: 'b', q3: 'a' };
   const STORAGE_KEY = 'smk_quiz_submissions_v1';
 
@@ -68,8 +66,7 @@ if (quizForm) {
     setTimeout(() => quizForm.classList.remove('sent'), 900);
   });
 
-  // results view (restricted)
-  const ALLOWED_USERS = ['admin', 'guru1']; // ubah sesuai kebutuhan
+  const ALLOWED_USERS = ['admin', 'guru1'];
   function askPassword() {
     const acct = prompt('Masukkan nama akun untuk melihat hasil (contoh: admin):');
     if (!acct) return null;
@@ -107,14 +104,28 @@ if (quizForm) {
     });
   }
 
-  // close modal
   if (closeResults && resultsModal) {
     closeResults.addEventListener('click', () => resultsModal.classList.add('hidden'));
     resultsModal.addEventListener('click', (e) => { if (e.target === resultsModal) resultsModal.classList.add('hidden'); });
   }
 
-  // keyboard esc
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && resultsModal) resultsModal.classList.add('hidden');
+  });
+}
+
+// ===== CUSTOM: Klik shape Dewan Ambalan ke tab Evaluasi =====
+const shapeDewan = document.querySelector('.shape-dewan-ambalan');
+if (shapeDewan) {
+  shapeDewan.addEventListener('click', () => {
+    // pindah ke section evaluasi dengan smooth scroll
+    const evalSection = document.querySelector('#evaluasi');
+    if (evalSection) {
+      evalSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    // optional: ubah active class di menu
+    $$('.topmenu a').forEach(a => a.classList.remove('active'));
+    const evalMenu = document.querySelector('.topmenu a[href="#evaluasi"]');
+    if (evalMenu) evalMenu.classList.add('active');
   });
 }
