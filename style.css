@@ -64,7 +64,7 @@ main{padding-top:100px}
 .section{min-height:75vh;padding:64px 20px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px;text-align:center}
 
 /* HOME */
-.home-title{font-size:48px;margin:6px 0 6px;color:var(--accent)}
+.home-title{font-size:60px;margin:6px 0 6px;color:var(--accent)}
 .home-logo{width:220px;height:220px;object-fit:contain;border-radius:16px;box-shadow:var(--shadow);background:linear-gradient(180deg,var(--card),#f7f9ff);padding:18px}
 .home-title {
   text-align: center;
