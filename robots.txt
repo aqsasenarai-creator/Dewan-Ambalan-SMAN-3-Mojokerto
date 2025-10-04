@@ -1,0 +1,6 @@
+# Izinkan semua bot mesin pencari untuk mengindeks website
+User-agent: *
+Allow: /
+
+# Lokasi sitemap
+Sitemap: https://ambalanSMAN3Mojokerto.com/sitemap.xml
