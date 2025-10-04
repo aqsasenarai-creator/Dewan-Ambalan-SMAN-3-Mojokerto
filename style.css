@@ -1,15 +1,15 @@
 /* ==== Reset & base ==== */
 :root{
-  --bg: #f6f8fb;
-  --card: #ffffff;
-  --muted: #6b7280;
-  --accent: #5563DE;
-  --accent-2: #74ABE2;
-  --glass: rgba(255,255,255,0.6);
+  --bg: #111010;       /* latar belakang utama */
+  --card: #3E2402;     /* kartu dan elemen utama */
+  --muted: #D4D3D1;    /* teks sekunder */
+  --accent: #545453;   /* elemen aksen */
+  --accent-2: #D4D3D1; /* warna hover / sekunder */
+  --glass: rgba(255,255,255,0.08);
   --soft: 12px;
   --radius: 12px;
-  --shadow: 0 8px 30px rgba(20,20,50,0.08);
-  --text: #1f2937;
+  --shadow: 0 8px 30px rgba(0,0,0,0.4);
+  --text: #FFFFFF;     /* teks utama */
 }
 
 *{box-sizing:border-box}
@@ -17,7 +17,7 @@ html,body{height:100%}
 body{
   margin:0;
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background: linear-gradient(180deg,var(--bg), #e9eef8);
+  background: linear-gradient(180deg,var(--bg), #1b1b1b);
   color:var(--text);
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
@@ -33,56 +33,84 @@ body{
   align-items:center;
   justify-content:space-between;
   padding:0 22px;
-  background: rgba(255,255,255,0.6);
+  background: rgba(62,36,2,0.9);
   backdrop-filter: blur(6px);
-  box-shadow: 0 4px 18px rgba(16,24,40,0.06);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.4);
   z-index:200;
 }
 
 /* brand */
 .brand{display:flex;align-items:center;gap:12px}
 .brand-logo{
-  width:48px;height:48px;border-radius:8px;object-fit:cover;border:1px solid rgba(0,0,0,0.05)
+  width:48px;height:48px;border-radius:8px;object-fit:cover;border:1px solid rgba(255,255,255,0.1)
 }
 .brand-text{display:flex;flex-direction:column;line-height:1}
-.school-abbr{font-weight:700;color:var(--accent);font-size:14px}
+.school-abbr{font-weight:700;color:var(--muted);font-size:14px}
 .school-name{font-weight:700;font-size:16px;color:var(--text)}
 
 /* menu */
 .topmenu ul{display:flex;gap:18px;align-items:center;margin:0;padding:0;list-style:none}
 .topmenu a{
-  color:var(--text);
+  color:var(--muted);
   text-decoration:none;
   font-weight:600;
   padding:8px 12px;border-radius:10px;
   transition: all .22s ease;
 }
-.topmenu a:hover{background:var(--accent-2);color:white;transform:translateY(-3px);box-shadow:var(--shadow)}
+.topmenu a:hover{
+  background:var(--accent);
+  color:var(--light);
+  transform:translateY(-3px);
+  box-shadow:var(--shadow);
+}
 
 /* ==== Layout ==== */
 main{padding-top:100px}
-.section{min-height:75vh;padding:64px 20px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px;text-align:center}
+.section{
+  min-height:75vh;
+  padding:64px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:18px;
+  text-align:center;
+}
 
 /* HOME */
-.home-title{font-size:60px;margin:6px 0 6px;color:var(--accent)}
-.home-logo{width:220px;height:220px;object-fit:contain;border-radius:16px;box-shadow:var(--shadow);background:linear-gradient(180deg,var(--card),#f7f9ff);padding:18px}
-.home-title {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+.home-title{
+  font-size:60px;
+  margin:6px 0 6px;
+  color:var(--muted);
+  text-align:center;
+}
+
+.home-logo{
+  width:220px;
+  height:220px;
+  object-fit:contain;
+  border-radius:16px;
+  box-shadow:var(--shadow);
+  background:linear-gradient(180deg,var(--card),#2b2b2b);
+  padding:18px;
 }
 
 .home-welcome {
-  text-align: center; /* biar rata tengah */
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-  color: #444; /* opsional: biar enak dibaca */
+  text-align:center;
+  font-size:1.2rem;
+  margin-bottom:20px;
+  color:var(--muted);
 }
 
-
 /* Section headings */
-.section-title{font-size:32px;color:var(--accent)}
-.section-sub{color:var(--muted);max-width:760px}
+.section-title{
+  font-size:32px;
+  color:var(--muted);
+}
+.section-sub{
+  color:var(--gray-light);
+  max-width:760px;
+}
 
 /* ==== ABSENSI ==== */
 .absensi-grid{
@@ -94,65 +122,76 @@ main{padding-top:100px}
   margin-top:18px;
   padding:0 12px;
 }
+
 .absensi-card{
   display:block;
   text-decoration:none;
   color:var(--text);
   border-radius:var(--radius);
-  background:linear-gradient(180deg,var(--card),#fbfdff);
+  background:linear-gradient(180deg,var(--card),#2b2b2b);
   padding:28px;
   min-height:140px;
   box-shadow:var(--shadow);
-  border:1px solid rgba(80,90,160,0.06);
+  border:1px solid rgba(255,255,255,0.08);
   transition:transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s;
   position:relative; overflow:hidden;
 }
-.absensi-card::after{
-  content:"";
-  position:absolute;right:-40%;top:-40%;width:140%;height:140%;
-  background:radial-gradient(circle at 30% 20%, rgba(85,99,222,0.08), transparent 20%),
-             radial-gradient(circle at 80% 80%, rgba(116,171,226,0.06), transparent 20%);
-  transform:translateZ(0);
-  transition:opacity .3s;
-}
-.absensi-card:hover{transform:translateY(-8px) rotate(-1deg);box-shadow:0 18px 40px rgba(25,30,70,0.12)}
-.absensi-inner{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
-.absensi-title{font-weight:700;font-size:18px;color:var(--accent)}
-.absensi-sub{color:var(--muted);font-size:14px}
 
-/* ==== EVALUASI (dibuat mirip absensi card) ==== */
+.absensi-card:hover{
+  transform:translateY(-8px) rotate(-1deg);
+  box-shadow:0 18px 40px rgba(0,0,0,0.6);
+}
+
+.absensi-inner{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.absensi-title{font-weight:700;font-size:18px;color:var(--muted)}
+.absensi-sub{color:var(--gray-light);font-size:14px}
+
+/* ==== EVALUASI ==== */
 .quiz-form{
   max-width:820px;width:100%;
   text-align:left;
   padding:28px;
   border-radius:var(--radius);
-  background:linear-gradient(180deg,var(--card),#fbfdff);
+  background:linear-gradient(180deg,var(--card),#2b2b2b);
   box-shadow:var(--shadow);
-  border:1px solid rgba(80,90,160,0.06);
+  border:1px solid rgba(255,255,255,0.08);
   transition:transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s;
 }
-.quiz-form:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(25,30,70,0.1)}
+.quiz-form:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(0,0,0,0.5)}
 
 .q{margin-bottom:14px}
 .q-t{font-weight:700;margin-bottom:8px}
-.q label{display:block;margin:6px 0;color:var(--text)}
+.q label{display:block;margin:6px 0;color:var(--muted)}
 
 .quiz-actions{display:flex;gap:12px;align-items:center;margin-top:14px}
 
 /* buttons */
 .btn{padding:10px 14px;border-radius:10px;border:1px solid transparent;font-weight:700;cursor:pointer}
 .btn.primary{background:var(--accent);color:white}
-.btn.ghost{background:transparent;border:1px solid rgba(31,41,55,0.06);color:var(--text)}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.2);color:var(--muted)}
 
 /* ==== Modal ==== */
-.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(8,10,20,0.45);z-index:400}
+.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(8,10,20,0.6);z-index:400}
 .modal.hidden{display:none}
-.modal-inner{background:white;padding:18px;border-radius:12px;max-width:700px;width:94%;box-shadow:var(--shadow);position:relative}
-.modal-close{position:absolute;right:12px;top:10px;border:none;background:transparent;font-size:24px;cursor:pointer}
+.modal-inner{background:#3E2402;padding:18px;border-radius:12px;max-width:700px;width:94%;box-shadow:var(--shadow);position:relative;color:white}
+.modal-close{position:absolute;right:12px;top:10px;border:none;background:transparent;font-size:24px;cursor:pointer;color:white}
 
 /* ==== Footer ==== */
-.site-footer{padding:28px 20px;background:transparent;border-top:1px solid rgba(30,40,60,0.04);margin-top:36px}
-.footer-inner{max-width:1100px;margin:0 auto;display:flex;gap:12px;align-items:center;justify-content:space-between}
+.site-footer{
+  padding:28px 20px;
+  background:#111010;
+  border-top:1px solid rgba(255,255,255,0.08);
+  margin-top:36px;
+}
+.footer-inner{
+  max-width:1100px;
+  margin:0 auto;
+  display:flex;
+  gap:12px;
+  align-items:center;
+  justify-content:space-between;
+  color:var(--muted);
+}
 .footer-blog h4{margin:0;font-size:16px}
 .footer-copy{color:var(--muted)}
 
