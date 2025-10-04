@@ -67,6 +67,19 @@ main{padding-top:100px}
 .home-title{font-size:48px;margin:6px 0 6px;color:var(--accent)}
 .home-welcome{max-width:760px;color:var(--muted);font-size:18px}
 .home-logo{width:220px;height:220px;object-fit:contain;border-radius:16px;box-shadow:var(--shadow);background:linear-gradient(180deg,var(--card),#f7f9ff);padding:18px}
+.home-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.home-welcome {
+  text-align: center; /* biar rata tengah */
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #444; /* opsional: biar enak dibaca */
+}
+
 
 /* Section headings */
 .section-title{font-size:32px;color:var(--accent)}
