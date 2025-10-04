@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Lokasi sitemap
-Sitemap: https://ambalanSMAN3Mojokerto.com/sitemap.xml
+Sitemap: https://DewanAmbalanSMAN3Mojokerto.com/sitemap.xml
