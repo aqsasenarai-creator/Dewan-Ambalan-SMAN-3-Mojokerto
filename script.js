@@ -11,25 +11,27 @@ $$('.topmenu a').forEach(a => {
     e.preventDefault();
     const target = document.querySelector(a.getAttribute('href'));
     if (!target) return;
-    target.scrollIntoView({behavior:'smooth', block:'start'});
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
 
 // ====== reveal elements on scroll (IntersectionObserver) ======
-const revealItems = document.querySelectorAll('.section-title, .home-title, .home-welcome, .home-logo, .absensi-card, .quiz-form');
+const revealItems = document.querySelectorAll(
+  '.section-title, .home-title, .home-welcome, .home-logo, .absensi-card, .quiz-form'
+);
 
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(ent => {
     if (ent.isIntersecting) ent.target.classList.add('visible');
   });
-}, {threshold: 0.18});
+}, { threshold: 0.18 });
 
 revealItems.forEach(el => revealObserver.observe(el));
 
-// ====== Absensi cards already links: no JS required (links open in new tab) ======
+// ====== Absensi cards (langsung link, no JS required) ======
 
 // ====== QUIZ logic (client-side) ======
-// NOTE: this is a simple client-side quiz storage. For real use, backend required.
+// NOTE: client-side only. Untuk real, perlu backend.
 const quizForm = $('#quizForm');
 const quizMsg = $('#quizMsg');
 const resultsModal = $('#resultsModal');
@@ -37,10 +39,10 @@ const resultsContent = $('#resultsContent');
 const viewResultsBtn = $('#viewResultsBtn');
 const closeResults = $('#closeResults');
 
-// correct answers (change as needed)
+// correct answers (ubah sesuai soal)
 const CORRECT = { q1: 'a', q2: 'b', q3: 'a' };
 
-// store submissions in localStorage key
+// key localStorage
 const STORAGE_KEY = 'smk_quiz_submissions_v1';
 
 // submit handler
@@ -53,11 +55,11 @@ quizForm.addEventListener('submit', (ev) => {
     q3: data.get('q3') || ''
   };
 
-  // score
+  // hitung skor
   let score = 0;
   Object.keys(CORRECT).forEach(k => { if (answers[k] === CORRECT[k]) score++; });
 
-  // store record (timestamp, score, answers)
+  // simpan record (ts, score, answers)
   const record = { ts: Date.now(), score, answers };
   const arr = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
   arr.push(record);
@@ -66,14 +68,14 @@ quizForm.addEventListener('submit', (ev) => {
   quizMsg.textContent = `Terima kasih! Skor Anda: ${score} / ${Object.keys(CORRECT).length}`;
   quizForm.reset();
 
-  // small visual cue
+  // animasi kecil
   quizForm.classList.add('sent');
   setTimeout(() => quizForm.classList.remove('sent'), 900);
 });
 
 // ====== RESULTS VIEW (restricted) ======
-// NOTE: client-side protection only. For production, implement server-side auth.
-const ALLOWED_USERS = ['admin', 'guru1']; // ubah sesuai akun yang diizinkan
+// NOTE: hanya proteksi client-side. Untuk produksi, harus server-side.
+const ALLOWED_USERS = ['admin', 'guru1']; // ubah sesuai akun
 function askPassword() {
   const acct = prompt('Masukkan nama akun untuk melihat hasil (contoh: admin):');
   if (!acct) return null;
@@ -87,13 +89,14 @@ viewResultsBtn.addEventListener('click', () => {
     alert('Akses ditolak. Anda tidak termasuk akun yang berwenang.');
     return;
   }
-  // gather submissions
+
+  // ambil data submissions
   const arr = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
   if (!arr.length) {
     resultsContent.innerHTML = '<p>Tidak ada data hasil.</p>';
   } else {
-    // compute average & list recent
-    const total = arr.reduce((s,r)=>s+r.score,0);
+    // hitung rata-rata & tampilkan histori
+    const total = arr.reduce((s, r) => s + r.score, 0);
     const avg = (total / (arr.length * Object.keys(CORRECT).length)) * 100;
     let html = `<p>Total submission: ${arr.length}</p>`;
     html += `<p>Rata-rata akurasi: ${avg.toFixed(1)}%</p>`;
@@ -114,8 +117,7 @@ viewResultsBtn.addEventListener('click', () => {
 closeResults.addEventListener('click', () => resultsModal.classList.add('hidden'));
 resultsModal.addEventListener('click', (e) => { if (e.target === resultsModal) resultsModal.classList.add('hidden'); });
 
-// ====== small UX polish: focus states for keyboard users ======
+// ====== UX polish: keyboard escape ======
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') resultsModal.classList.add('hidden');
 });
-
